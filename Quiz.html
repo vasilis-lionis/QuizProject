@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Quiz.css">
+</head>
+<body onload="getFile()">
+    <form id="form">
+        <div class="container" id="bodi">
+            <div id="question-container" class="hide">
+                <div class="header">
+                    <div id="counter">Question <span id="current" style="font-family: 'Nunito', sans-serif;">1</span> from <span style="font-family: 'Nunito', sans-serif;;" id="sum"></span></div>
+                        <div class="time" id="time">Time Left<span id="timer">00</span></div>
+                    </div>
+                <div id="question" data-question></div>
+                    <div id="answers" class="btn-grid">
+                        <button class="btn"></button>
+                        <button class="btn"></button>
+                        <button class="btn"></button>
+                        <button class="btn"></button>
+                </div>
+            </div>
+            <div class="controls">
+                <button id="start-btn" class="start-btn btn">Start</button>
+                <button id="next-btn" class="next-btn btn hide">Next</button>
+                <button type='submit' id="result-btn" class="result-btn btn hide" onclick="Click()">Results</button>
+            </div>
+        </div>
+    </form>
+    <script src="Quiz.js" ></script>
+</body>
+</html>

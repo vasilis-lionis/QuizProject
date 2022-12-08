@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Menu.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Quiz Menu</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://kit.fontawesome.com/a2b4fc0f7a.js" crossorigin="anonymous"></script>
+</head>
+<body >
+    <div class="wrapper">
+        <div class="title">
+            <h2>Quiz</h2>
+        </div>
+        <form id="form">
+            <div class="form" id="form">
+                <div class="input_field">
+                    <label>Number of Questions:</label>
+                    <input type="text" class="input" id="sum_questions" placeholder="Number from 1 to 50">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+                <div class="input_field">
+                    <label>Select Category:</label>
+                    <div class="custom_select" >
+                        <select id="category">
+                            <option value="0">Any Category</option>
+                            <option value="9">General Knowledge</option>
+                            <option value="10">Entertainment: Books</option>
+                            <option value="11">Entertainment: Films</option>
+                            <option value="12">Entertainment: Music</option>
+                            <option value="13">Entertainment: Musicals & Theaters</option>
+                            <option value="14">Entertainment: Television</option>
+                            <option value="15">Entertainment: Video Games</option>
+                            <option value="16">Entertainment: Board Games</option>
+                            <option value="29">Entertainment: Comics</option>
+                            <option value="31">Entertainment: Japanese Anime & Manga</option>
+                            <option value="32">Entertainment: Cartoon & Animations</option>
+                            <option value="17">Science & Nature</option>
+                            <option value="18">Science: Computers</option>
+                            <option value="30">Science: Gadgets</option>
+                            <option value="19">Science: Mathematics</option>
+                            <option value="20">Mythology</option>
+                            <option value="21">Sports</option>
+                            <option value="22">Geography</option>
+                            <option value="23">History</option>
+                            <option value="24">Politics</option>
+                            <option value="25">Art</option>
+                            <option value="26">Celebrities</option>
+                            <option value="27">Animals</option>
+                            <option value="28">Vehicles</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input_field">
+                    <label>Select Difficulty:</label>
+                    <div class="custom_select">
+                        <select id="difficulty">
+                            <option value="">Any Difficulty</option>
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input_field">
+                    <label>Select Type:</label>
+                    <div class="custom_select">
+                        <select id="type">
+                            <option value="">Any Type</option>
+                            <option value="multiple">Multiple Choice</option>
+                            <option value="boolean">True / False</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input_field">
+                    <label>Timer:</label>
+                    <input type="text" class="input" id="timer" placeholder="Time number in seconds">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+                <div class="input_field">
+                    <div class="input_field timer">
+                        <label class="check">
+                            <input type="checkbox" id="check">
+                            <span class="checkmark"></span>
+                        </label>
+                        <p>Enable Timer</p>
+                    </div>
+                    <div class="input_field file">
+                        <input type="file" id="file" accept="file/*">
+                        <label for="file">
+                            <span class="material-symbols-outlined">
+                                upload_file
+                            </span> &nbsp;
+                            Choose file
+                        </label>
+                    </div>
+                </div>
+                <div class="input_field">
+                    <input type="submit" value="Start" class="btn" id="start-btn">
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="Menu.js"></script>
+</body>
+</html>
