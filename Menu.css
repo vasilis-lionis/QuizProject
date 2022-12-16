@@ -247,12 +247,18 @@ body{
 .wrapper .form .input_field.file{
    position: absolute;
    left: 55%;
-   bottom: 25%;
+   bottom: 50%;
+}
+
+.wrapper .form .input_field .guide{
+    font-size: 15px;
+    position: relative;
+    bottom: 5px;
 }
 
 .wrapper .form .input_field.file label,
 .wrapper .form .input_field.file .material-symbols-outlined{
-    font-size: 1rem;
+    font-size: 0.97rem;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -271,6 +277,11 @@ body{
     .wrapper .form .input_field.file{
         position: absolute;
         left: 50%;
+        
+    }
+    .wrapper .form .input_field.file label,
+    .wrapper .form .input_field.file .material-symbols-outlined{
+        font-size: 0.9rem;
     }
 }
 

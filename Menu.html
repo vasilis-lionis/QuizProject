@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://kit.fontawesome.com/a2b4fc0f7a.js" crossorigin="anonymous"></script>
 </head>
-<body >
+<body>
     <div class="wrapper">
         <div class="title">
             <h2>Quiz</h2>
@@ -85,15 +85,8 @@
                     <small>Error message</small>
                 </div>
                 <div class="input_field">
-                    <div class="input_field timer">
-                        <label class="check">
-                            <input type="checkbox" id="check">
-                            <span class="checkmark"></span>
-                        </label>
-                        <p>Enable Timer</p>
-                    </div>
                     <div class="input_field file">
-                        <input type="file" id="file" accept="file/*">
+                        <input type="file" id="file" accept="file/*" onchange="readFile(this)">
                         <label for="file">
                             <span class="material-symbols-outlined">
                                 upload_file
@@ -101,6 +94,14 @@
                             Choose file
                         </label>
                     </div>
+                    <div class="input_field timer">
+                        <label class="check">
+                            <input type="checkbox" id="check">
+                            <span class="checkmark"></span>
+                        </label>
+                        <p>Enable Timer</p>
+                    </div>
+                    <p class="guide">Choose your personal questions in a JSON format file to play the quiz with the "Choose File" button.</p>
                 </div>
                 <div class="input_field">
                     <input type="submit" value="Start" class="btn" id="start-btn">

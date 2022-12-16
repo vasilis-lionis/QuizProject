@@ -6,43 +6,52 @@ const difficulty = document.getElementById("difficulty")
 const type = document.getElementById("type")
 const timer = document.getElementById("timer")
 const check = document.getElementById("check")
+const file = document.getElementById("file")
 var Check
+var kati =false
 
+function checkFILE(){
+    try{
+        json = JSON.parse(json)
+    }catch(e) {
+        return false
+    }
+    return true
+    
+}
 
-alert("Στο μελλον θα υπαρξει καλυτερος τροπος με styles κτλ που να δειχνει στον χρηστη τι δεν εχει βαλει. Επισης επειδη καποιες κατηγοριες μπορει να μην εχουν τον αριθμο ερωτησεων που θες (πχ εαν βαλεις category Entartaitment boolean και 20 ερωτησεις κατα πασα πιθανοτητα δεν θα σου εμφανισει τιποτα γιατι δεν εχει τοσες ερωτησεις. Θα διορθωθει απλα ενημερωνω για το bug")
+function message(){
+    if (checkFILE()){
+        alert("good json")
+    }else{
+        alert("bad json")
+    }
+    //alert(typeof json)
+    checkJSON()
+}
 
 startButton.addEventListener('click',()=>{
-    
+    //console.log(document.getElementById("file").value)
     checkInputs()
-
-    form.addEventListener('submit', function(e){
-        e.preventDefault();
-    
-        const Questions =  questions.value
-        const Category = category.value
-        const Difficulty = difficulty.value
-        const Type = type.value
-        const Timer = timer.value
-        if (check.checked == true){
-            Check = 1
-        } 
-        else{
-            Check = 0
-        }        
-    
-        localStorage.setItem('questions', Questions)
-        localStorage.setItem('category', Category)
-        localStorage.setItem('difficulty', Difficulty)
-        localStorage.setItem('type', Type)
-        localStorage.setItem('Timer', Timer)
-        localStorage.setItem('check', Check)
-    
-    })
-
+    sendItems()
 })
 
-function checkInputs(){
+function readFile(){
 
+    let reader = new FileReader()
+
+    reader.readAsText(file.files[0])
+
+    reader.onload = function() {
+        json = reader.result
+        message()
+        //console.log(json)
+    }
+
+}
+
+
+function checkInputs(){
     timer_value = parseInt(timer.value)
     questions_value = parseInt(questions.value)
 
@@ -76,12 +85,12 @@ function checkInputs(){
     }
 
     if((correctTime && correctQuestions) ||(correctQuestions && check.checked == false)){
-        location.assign('Quiz.html')
+        getFile()
     }
 }
 
 function setErrorFor(input, message){
-    const formControl = input.parentElement //.inputfield
+    const formControl = input.parentElement //inputfield
     const small = formControl.querySelector('small')
     
     small.innerText = message
@@ -93,3 +102,63 @@ function setSuccessFor(input){
     formControl.className = 'input_field success'
 }
 
+function getFile(){
+
+    var link = `https://opentdb.com/api.php?amount=${questions.value}`
+    
+    var file = "Documents/10-Entertainment_ Books.oq"
+    var file_peinaw = "Documents/quiz_peinaw.json"
+    var file2 = "10-Entertainment_ Books.oq"
+
+    if(category.value != 0){
+        link += `&category=${category.value}`
+    }
+    if(difficulty.value != ""){
+        link += `&difficulty=${difficulty.value}`
+    }
+    if(type.value != ""){
+        link += `&type=${type.value}` 
+    }
+
+    fetch(link)
+    .then(response => {
+        return response.json() //retunrs our data
+    })              
+    .then(jsondata => {
+        //json file
+        json = jsondata
+        checkJSON()
+    })
+}
+
+function sendItems(){
+    form.addEventListener('submit', function(e){
+        e.preventDefault()
+        const Timer = timer.value
+        const Questions = questions.value
+        if (check.checked == true){
+            Check = 1
+        } 
+        else{
+            Check = 0
+        }
+        localStorage.setItem('questions',Questions)
+        localStorage.setItem('Timer', Timer)
+        localStorage.setItem('check', Check)
+        
+    })
+}
+
+function checkJSON(){
+    if(json.results.length == 0){
+        alert("EIMAI MESA REEEEEEEEEEE")
+    }else{
+        json = JSON.stringify(json)
+        localStorage.setItem('json', json)
+        goToQuiz()
+    }
+}
+
+function goToQuiz(){
+    location.assign('Quiz.html')
+}

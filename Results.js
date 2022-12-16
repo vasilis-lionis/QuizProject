@@ -22,6 +22,10 @@ if(Time ==0){
 percent.textContent = parseFloat((Correct/apotelesma)*100).toFixed(2) + '%'
 score.textContent = (Correct)*100 
 
-function Click(){
+function Restart(){
     return location.replace('Quiz.html')
+}
+
+function Menu(){
+    return location.replace('Menu.html')
 }

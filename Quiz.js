@@ -11,11 +11,9 @@ const form = document.getElementById("form")
 const timer= document.getElementById("timer")
 const TimerObject= document.getElementById("time")
 
-//ta get apoto menu.js
-const Questions = parseInt(localStorage.getItem('questions'))
-const Category = parseInt(localStorage.getItem('category'))
-const Difficulty = localStorage.getItem('difficulty')
-const Type = localStorage.getItem('type')
+//ta get apo to menu.js
+const json = JSON.parse(localStorage.getItem('json'))
+const questions = parseInt(localStorage.getItem('questions'))
 const input_time = parseInt(localStorage.getItem('Timer'))
 const Check = localStorage.getItem('check')
 //διαφορες μεταβλητες
@@ -23,8 +21,6 @@ let shuffledQuestions,current, i,help,shuffledAnswers,answers,tries,swsto
 tries = 0
 let time = input_time+1 //+1 gia na mhn xanei sthn arxh mono to input_time grhgora kai den fanei 
 let interval
-
-
 
 startButton.addEventListener('click',startGame)
 startButton.classList.add('hide');
@@ -184,7 +180,7 @@ form.addEventListener('submit', function(e){
 })
 
 function Click(){
-    location.replace('results.html')
+    location.replace('Results.html')
 }
 
 var precodedArray
@@ -210,7 +206,7 @@ function JSONtoArray(jquest){  //json file
 
 var finalQuest = []
 let positions = []
-let WantedLength = Questions //max 49 
+let WantedLength = questions //max 49 
 
 function SetArray(quest/*array*/){
     positions.length = 0
@@ -228,35 +224,6 @@ function SetArray(quest/*array*/){
     }
 }
 
-var link = `https://opentdb.com/api.php?amount=${Questions}`
-
-if(Category != 0){
-    link += `&category=${Category}`
-}
-if(Difficulty != ""){
-    link += `&difficulty=${Difficulty}`
-}
-if(Type != ""){
-    link += `&type=${Type}` 
-}
-
-
-var file = "Documents/10-Entertainment_ Books.oq"
-var file_peinaw = "Documents/quiz_peinaw.json"
-var file2 = "10-Entertainment_ Books.oq"
-var json
-
-function getFile(){
-    fetch(link)
-    .then(response => {
-        return response.json() //retunrs our data
-    })              
-    .then(jsondata => {
-        //json file
-        json = jsondata
-        startGame()
-    })
-}
 
 function DecodeJSON(dquest){
     for (let i=0; i<dquest.results.length; i++){
