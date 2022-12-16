@@ -11,6 +11,7 @@ var Check
 var kati =false
 
 function checkFILE(){
+    alert("EIMAI GIT")
     try{
         json = JSON.parse(json)
     }catch(e) {
