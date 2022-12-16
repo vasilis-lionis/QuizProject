@@ -8,7 +8,7 @@ const timer = document.getElementById("timer")
 const check = document.getElementById("check")
 const file = document.getElementById("file")
 var Check
-var kati =false
+var filed = false
 
 function checkFILE(){
     alert("EIMAI GIT")
@@ -27,18 +27,17 @@ function message(){
     }else{
         alert("bad json")
     }
+    filed = true
     //alert(typeof json)
-    checkJSON()
+    //checkJSON()
 }
 
 startButton.addEventListener('click',()=>{
-    //console.log(document.getElementById("file").value)
     checkInputs()
     sendItems()
 })
 
 function readFile(){
-
     let reader = new FileReader()
 
     reader.readAsText(file.files[0])
@@ -46,9 +45,7 @@ function readFile(){
     reader.onload = function() {
         json = reader.result
         message()
-        //console.log(json)
     }
-
 }
 
 
@@ -85,7 +82,10 @@ function checkInputs(){
         correctTime = true
     }
 
-    if((correctTime && correctQuestions) ||(correctQuestions && check.checked == false)){
+    if((filed)&&((correctTime && correctQuestions) ||(correctQuestions && check.checked == false))){
+        checkJSON()
+    }
+    else if((correctTime && correctQuestions) ||(correctQuestions && check.checked == false)){
         getFile()
     }
 }
