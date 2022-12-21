@@ -14,6 +14,7 @@ const TimerObject= document.getElementById("time")
 //ta get apo to menu.js
 const json = JSON.parse(localStorage.getItem('json'))
 const questions = parseInt(localStorage.getItem('questions'))
+const type = localStorage.getItem('type')
 const input_time = parseInt(localStorage.getItem('Timer'))
 const Check = localStorage.getItem('check')
 //διαφορες μεταβλητες
@@ -79,27 +80,37 @@ function setNextQuestion(){
     resetState()
     showQuestion(shuffledQuestions[current])
 }
-
+var multiple
 function showQuestion(question){
     questionΕlement.innerText = question.question
     shuffledAnswers = question.answers.sort(() => Math.random() - .5)
-    if (shuffledAnswers[0].text == "True" || shuffledAnswers[0].text == "False" ){
-      for(let i=0; i<2; i++){
-        const button = document.createElement('button')
-        if(i==0){
-          button.innerText = 'True'
-        } 
-        else if(i==1){
-          button.innerText = 'False'
-        } 
-        button.classList.add('btn')
-        if(shuffledAnswers[i].correct){
-            button.dataset.correct = shuffledAnswers[i].correct
+    multiple = false
+    if (type == "boolean" ){
+        multiple = true
+        const button = [document.createElement('button'),document.createElement('button')]
+        for(let i=0; i<2; i++){
+            if(i==0){
+                button[i].innerText = 'True'
+            } 
+            else if(i==1){
+                button[i].innerText = 'False'
+            } 
+            button[i].classList.add('btn')
+            button[i].addEventListener('click',selectAnswer)
+            answerButtons.appendChild(button[i])
         }
-        button.addEventListener('click',selectAnswer)
-        answerButtons.appendChild(button)
-      }
-      return
+        for(let i=0; i<2; i++){ //0TRUE 1FALSE PANTA 
+            if(button[i].innerText == shuffledAnswers[i].text){
+                button[i].dataset.correct = shuffledAnswers[i].correct
+            }else{
+                if(i==0){
+                    button[i].dataset.correct = shuffledAnswers[1].correct
+                }else{
+                    button[i].dataset.correct = shuffledAnswers[0].correct
+                }
+            }
+        }
+        return
     }
     question.answers.forEach(answer => {
         const button = document.createElement('button')
@@ -124,7 +135,7 @@ function resetState(){
 function selectAnswer(e){
     const selectedButton = e.target
     const correct = selectedButton.dataset.correct
-    if(correct){
+    if(correct == "true"){
         swsto +=1
     }
     setStatusClass(document.body,correct)
@@ -152,7 +163,7 @@ function selectAnswer(e){
 
 function setStatusClass(element,correct){
     clearStatusClass(element)
-    if(correct){
+    if(correct == "true"){
         element.classList.add('correct')
     }
     else{
