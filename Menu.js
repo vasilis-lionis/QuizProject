@@ -23,12 +23,12 @@ function checkFILE(){
 function message(){
     if (checkFILE()){
         alert("good json")
+        document.getElementById("label").innerHTML = "File Choosed"
+
     }else{
         alert("bad json")
     }
     filed = true
-    //alert(typeof json)
-    //checkJSON()
 }
 
 startButton.addEventListener('click',()=>{
