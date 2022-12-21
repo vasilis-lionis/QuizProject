@@ -19,7 +19,7 @@ const Check = localStorage.getItem('check')
 //διαφορες μεταβλητες
 let shuffledQuestions,current, i,help,shuffledAnswers,answers,tries,swsto
 tries = 0
-let time = input_time+1 //+1 gia na mhn xanei sthn arxh mono to input_time grhgora kai den fanei 
+let time = input_time //+1 gia na mhn xanei sthn arxh mono to input_time grhgora kai den fanei 
 let interval
 
 startButton.addEventListener('click',startGame)
@@ -51,6 +51,11 @@ function startGame(){
     }else{
         TimerObject.style.opacity = "1"
         interval = setInterval(setTimer, 1000) 
+    }
+    if (time>=10){
+        timer.innerHTML = time
+    }else{
+        timer.innerHTML = `0${time}`
     }
     JSONtoArray(json)
     swsto = 0 

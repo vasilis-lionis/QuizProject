@@ -11,14 +11,13 @@ var Check
 var filed = false
 
 function checkFILE(){
-    alert("EIMAI GIT")
+    //alert("EIMAI GIT")
     try{
         json = JSON.parse(json)
     }catch(e) {
         return false
     }
-    return true
-    
+    return true 
 }
 
 function message(){
@@ -42,7 +41,7 @@ function readFile(){
 
     reader.readAsText(file.files[0])
 
-    reader.onload = function() {
+    reader.onload = function(){
         json = reader.result
         message()
     }
@@ -72,8 +71,8 @@ function checkInputs(){
 
     if(timer.value == "" && check.checked == true){
         setErrorFor(timer, 'Please insert number of time')
-    }else if (timer.value > 60 && check.checked == true){
-        setErrorFor(timer, 'The number of time is too big')
+    }else if ((timer.value < 0 || timer.value > 60) && check.checked == true){
+        setErrorFor(timer, 'Invalid input')
     }else if(isNaN(timer_value) && check.checked == true){
         setErrorFor(timer, 'Amount of time must be number')
     }
@@ -135,7 +134,7 @@ function getFile(){
 function sendItems(){
     form.addEventListener('submit', function(e){
         e.preventDefault()
-        const Timer = timer.value
+        const Timer = timer.value 
         const Questions = questions.value
         if (check.checked == true){
             Check = 1
@@ -152,7 +151,7 @@ function sendItems(){
 
 function checkJSON(){
     if(json.results.length == 0){
-        alert("EIMAI MESA REEEEEEEEEEE")
+        alert("No questions")
     }else{
         json = JSON.stringify(json)
         localStorage.setItem('json', json)
