@@ -137,6 +137,8 @@ function sendItems(){
         const Timer = timer.value 
         const Questions = questions.value
         const Type = type.value
+        const restart = 0
+
         if (check.checked == true){
             Check = 1
         } 
@@ -147,6 +149,7 @@ function sendItems(){
         localStorage.setItem('Timer', Timer)
         localStorage.setItem('check', Check)
         localStorage.setItem('type', Type)
+        localStorage.setItem('restart', restart)
     })
 }
 

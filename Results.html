@@ -8,40 +8,43 @@
     <title>Results</title>
 </head>
 <body>
-    <div class="container">
-        <div class="pinakas">
-            <div id="header" >Results</div>
-            <table>
-                <tr>
-                    <th>Set of questions</th>
-                    <th id="sum">6</th>
-                </tr>
-                <tr>
-                    <th>Tries</th>
-                    <th id="tries">3</th>
-                </tr>
-                <tr>
-                    <th>Correct answers</th>
-                    <th id="correct">3</th>
-                </tr>
-                <tr>
-                    <th>Wrong answers</th>
-                    <th id="wrong">2</th>
-                </tr>
-                <tr>
-                    <th>Percentage of correct answers</th>
-                    <th id="percent">70.00%</th>
-                </tr>
-                <tr>
-                    <th>Score</th>
-                    <th id="score">300</th>
-                </tr>
-            </table>
-            <div class="controls">
-                <button id="restart-btn" class="restart-btn btn" onclick="Restart()">Try again</button>
-                <button id="menu-btn" class="menu-btn btn" onclick="Menu()">Return to Menu</button>
+    <form id="form">
+        <div class="container">
+            <div class="pinakas">
+                <div id="header" >Results</div>
+                <table>
+                    <tr>
+                        <th>Set of questions</th>
+                        <th id="sum">6</th>
+                    </tr>
+                    <tr>
+                        <th>Tries</th>
+                        <th id="tries">3</th>
+                    </tr>
+                    <tr>
+                        <th>Correct answers</th>
+                        <th id="correct">3</th>
+                    </tr>
+                    <tr>
+                        <th>Wrong answers</th>
+                        <th id="wrong">2</th>
+                    </tr>
+                    <tr>
+                        <th>Percentage of correct answers</th>
+                        <th id="percent">70.00%</th>
+                    </tr>
+                    <tr>
+                        <th>Score</th>
+                        <th id="score">300</th>
+                    </tr>
+                </table>
+                <div class="controls">
+                    <button id="restart-btn" class="restart-btn btn" onclick="Restart()">Try again</button>
+                    <button id="menu-btn" class="menu-btn btn" onclick="Menu()">Return to Menu</button>
+                </div>
             </div>
         </div>
+    </form>
     <script src="Results.js"></script>
 </body>
 </html>
