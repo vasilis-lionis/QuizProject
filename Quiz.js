@@ -20,10 +20,10 @@ const Check = localStorage.getItem('check')
 
 //διαφορες μεταβλητες
 let shuffledQuestions,current, i,help,shuffledAnswers,answers,tries,swsto
-let time = input_time //+1 gia na mhn xanei sthn arxh mono to input_time grhgora kai den fanei 
+let time = input_time 
 let interval
 
-restartCounter()
+restartTries()
 
 startButton.addEventListener('click',startGame)
 startButton.classList.add('hide');
@@ -295,7 +295,7 @@ let setTimer = () =>{
     }
 }
 
-function restartCounter(){
+function restartTries(){
     const restart =  parseInt(localStorage.getItem('restart'))
     if(restart == 0 || isNaN(restart)){
         tries = 0
