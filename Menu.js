@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const startButtonAPI = document.getElementById("start-btn")
 const startButtonFILE = document.getElementById("start-btn file")
 const formAPI = document.getElementById("form API")
@@ -68,46 +67,7 @@ startButtonFILE.addEventListener('click',()=>{
     sendItems()
 })
 
-=======
-const startButton = document.getElementById("start-btn")
-const form = document.getElementById("form")
-const questions = document.getElementById("sum_questions")
-const category = document.getElementById("category")
-const difficulty = document.getElementById("difficulty")
-const type = document.getElementById("type")
-const timer = document.getElementById("timer")
-const check = document.getElementById("check")
-const file = document.getElementById("file")
-var Check
-var filed = false
 
-function checkFILE(){
-    //alert("EIMAI GIT")
-    try{
-        json = JSON.parse(json)
-    }catch(e) {
-        return false
-    }
-    return true 
-}
-
-function message(){
-    if (checkFILE()){
-        alert("good json")
-        document.getElementById("label").innerHTML = "File Choosed"
-
-    }else{
-        alert("bad json")
-    }
-    filed = true
-}
-
-startButton.addEventListener('click',()=>{
-    checkInputs()
-    sendItems()
-})
-
->>>>>>> 87f70da8aac6397c6b2b99b677e6db1cb35837f6
 function readFile(){
     let reader = new FileReader()
 
@@ -121,12 +81,6 @@ function readFile(){
 
 
 function checkInputs(){
-<<<<<<< HEAD
-=======
-    timer_value = parseInt(timer.value)
-    questions_value = parseInt(questions.value)
-
->>>>>>> 87f70da8aac6397c6b2b99b677e6db1cb35837f6
     var correctQuestions = false
     var correctTime = false
 
@@ -189,29 +143,10 @@ function checkInputs(){
         }
     }
 
-<<<<<<< HEAD
     if((filed)&&((correctTime && correctQuestions) ||(correctQuestions && checkFILE.checked == false))){
         checkJSON()
     }
     else if((correctTime && correctQuestions) ||(correctQuestions && checkAPI.checked == false)){
-=======
-    if(timer.value == "" && check.checked == true){
-        setErrorFor(timer, 'Please insert number of time')
-    }else if ((timer.value < 0 || timer.value > 60) && check.checked == true){
-        setErrorFor(timer, 'Invalid input')
-    }else if(isNaN(timer_value) && check.checked == true){
-        setErrorFor(timer, 'Amount of time must be number')
-    }
-    else if (timer.value != "" && check.checked == true){
-        setSuccessFor(timer)
-        correctTime = true
-    }
-
-    if((filed)&&((correctTime && correctQuestions) ||(correctQuestions && check.checked == false))){
-        checkJSON()
-    }
-    else if((correctTime && correctQuestions) ||(correctQuestions && check.checked == false)){
->>>>>>> 87f70da8aac6397c6b2b99b677e6db1cb35837f6
         getFile()
     }
 }
@@ -231,17 +166,13 @@ function setSuccessFor(input){
 
 function getFile(){
 
-<<<<<<< HEAD
     var link = `https://opentdb.com/api.php?amount=${questionsAPI.value}`
-=======
-    var link = `https://opentdb.com/api.php?amount=${questions.value}`
->>>>>>> 87f70da8aac6397c6b2b99b677e6db1cb35837f6
     
     var file = "Documents/10-Entertainment_ Books.oq"
     var file_peinaw = "Documents/quiz_peinaw.json"
     var file2 = "10-Entertainment_ Books.oq"
 
-<<<<<<< HEAD
+
     if(categoryAPI.value != 0){
         link += `&category=${categoryAPI.value}`
     }
@@ -250,16 +181,6 @@ function getFile(){
     }
     if(typeAPI.value != ""){
         link += `&type=${typeAPI.value}` 
-=======
-    if(category.value != 0){
-        link += `&category=${category.value}`
-    }
-    if(difficulty.value != ""){
-        link += `&difficulty=${difficulty.value}`
-    }
-    if(type.value != ""){
-        link += `&type=${type.value}` 
->>>>>>> 87f70da8aac6397c6b2b99b677e6db1cb35837f6
     }
 
     fetch(link)
@@ -274,7 +195,6 @@ function getFile(){
 }
 
 function sendItems(){
-<<<<<<< HEAD
     if(InputType == "API"){
         formAPI.addEventListener('submit', function(e){
             e.preventDefault()
@@ -311,27 +231,6 @@ function sendItems(){
             localStorage.setItem('type', Type)
         })
     }
-=======
-    form.addEventListener('submit', function(e){
-        e.preventDefault()
-        const Timer = timer.value 
-        const Questions = questions.value
-        const Type = type.value
-        const restart = 0
-
-        if (check.checked == true){
-            Check = 1
-        } 
-        else{
-            Check = 0
-        }
-        localStorage.setItem('questions',Questions)
-        localStorage.setItem('Timer', Timer)
-        localStorage.setItem('check', Check)
-        localStorage.setItem('type', Type)
-        localStorage.setItem('restart', restart)
-    })
->>>>>>> 87f70da8aac6397c6b2b99b677e6db1cb35837f6
 }
 
 function checkJSON(){
