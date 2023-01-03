@@ -20,12 +20,18 @@ const Check = localStorage.getItem('check')
 
 //διαφορες μεταβλητες
 let shuffledQuestions,current, i,help,shuffledAnswers,answers,tries,swsto
+<<<<<<< HEAD
 tries = 0
-let time = input_time+1 //+1 gia na mhn xanei sthn arxh mono to input_time grhgora kai den fanei 
+let time = input_time //+1 gia na mhn xanei sthn arxh mono to input_time grhgora kai den fanei 
 let interval
 
+=======
+let time = input_time 
+let interval
 
+restartTries()
 
+>>>>>>> 87f70da8aac6397c6b2b99b677e6db1cb35837f6
 startButton.addEventListener('click',startGame)
 startButton.classList.add('hide');
 
