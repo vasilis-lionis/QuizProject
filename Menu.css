@@ -235,7 +235,7 @@ body{
     
 }
 
-.wrapper .form .input_field .check .checkmark::before{
+.wrapper .form .input_field .check .checkmark::before{  
     content: "";
     position: absolute;
     top: 1px;
@@ -313,16 +313,6 @@ body{
         position: absolute;
         bottom: 50%;
         left: 50%;
-    }
-    .wrapper .form .input_field.file p,
-    .wrapper .form .input_field.file .material-symbols-outlined{ 
-        font-size: 13.5px;
-    }
-    .wrapper .form .input_field.timer .file{
-        font-size: 14px;
-    }
-    .wrapper .form .input_field.file label{
-        width: 100%;
     }
 }
 

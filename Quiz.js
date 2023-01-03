@@ -17,11 +17,14 @@ const questions = parseInt(localStorage.getItem('questions'))
 const type = localStorage.getItem('type')
 const input_time = parseInt(localStorage.getItem('Timer'))
 const Check = localStorage.getItem('check')
+
 //διαφορες μεταβλητες
 let shuffledQuestions,current, i,help,shuffledAnswers,answers,tries,swsto
 tries = 0
-let time = input_time //+1 gia na mhn xanei sthn arxh mono to input_time grhgora kai den fanei 
+let time = input_time+1 //+1 gia na mhn xanei sthn arxh mono to input_time grhgora kai den fanei 
 let interval
+
+
 
 startButton.addEventListener('click',startGame)
 startButton.classList.add('hide');
@@ -290,6 +293,15 @@ let setTimer = () =>{
     }
     else{
         timer.innerHTML = `0${+(--time)}` 
+    }
+}
+
+function restartTries(){
+    const restart =  parseInt(localStorage.getItem('restart'))
+    if(restart == 0 || isNaN(restart)){
+        tries = 0
+    }else{
+        tries = parseInt(localStorage.getItem('tries'))
     }
 }
 
