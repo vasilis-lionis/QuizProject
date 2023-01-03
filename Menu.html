@@ -10,104 +10,207 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://kit.fontawesome.com/a2b4fc0f7a.js" crossorigin="anonymous"></script>
 </head>
-<body >
+<body>
     <div class="wrapper">
         <div class="title">
             <h2>Quiz</h2>
         </div>
-        <form id="form">
-            <div class="form" id="form">
-                <div class="input_field">
-                    <label>Number of Questions:</label>
-                    <input type="text" class="input" id="sum_questions" placeholder="Number from 1 to 50">
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-exclamation-circle"></i>
-                    <small>Error message</small>
+        <div class="tabs">
+            <div class="tabs__head">
+                <span class="tabs__toggle">Center Menu</span>
+                <span class="tabs__toggle is-active">API</span>
+                <span class="tabs__toggle">Upload File</span>
+            </div>
+            <div class="tabs__body">
+                <div class="tabs__content" id="CenterMenu">
+                    <h2 class="tabs__title">kati</h2>
+                    <p class="tabs__text">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </p>
                 </div>
-                <div class="input_field">
-                    <label>Select Category:</label>
-                    <div class="custom_select" >
-                        <select id="category">
-                            <option value="0">Any Category</option>
-                            <option value="9">General Knowledge</option>
-                            <option value="10">Entertainment: Books</option>
-                            <option value="11">Entertainment: Films</option>
-                            <option value="12">Entertainment: Music</option>
-                            <option value="13">Entertainment: Musicals & Theaters</option>
-                            <option value="14">Entertainment: Television</option>
-                            <option value="15">Entertainment: Video Games</option>
-                            <option value="16">Entertainment: Board Games</option>
-                            <option value="29">Entertainment: Comics</option>
-                            <option value="31">Entertainment: Japanese Anime & Manga</option>
-                            <option value="32">Entertainment: Cartoon & Animations</option>
-                            <option value="17">Science & Nature</option>
-                            <option value="18">Science: Computers</option>
-                            <option value="30">Science: Gadgets</option>
-                            <option value="19">Science: Mathematics</option>
-                            <option value="20">Mythology</option>
-                            <option value="21">Sports</option>
-                            <option value="22">Geography</option>
-                            <option value="23">History</option>
-                            <option value="24">Politics</option>
-                            <option value="25">Art</option>
-                            <option value="26">Celebrities</option>
-                            <option value="27">Animals</option>
-                            <option value="28">Vehicles</option>
-                        </select>
-                    </div>
+                <div class="tabs__content is-active" id="API"> 
+                    <form id="form API">
+                        <div class="form" id="form">
+                            <div class="input_field">
+                                <label>Number of Questions:</label>
+                                <input type="text" class="input" id="sum_questions API" placeholder="Number from 1 to 50">
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error message</small>
+                            </div>
+                            <div class="input_field">
+                                <label>Select Category:</label>
+                                <div class="custom_select" >
+                                    <select id="category API">
+                                        <option value="0">Any Category</option>
+                                        <option value="9">General Knowledge</option>
+                                        <option value="10">Entertainment: Books</option>
+                                        <option value="11">Entertainment: Films</option>
+                                        <option value="12">Entertainment: Music</option>
+                                        <option value="13">Entertainment: Musicals & Theaters</option>
+                                        <option value="14">Entertainment: Television</option>
+                                        <option value="15">Entertainment: Video Games</option>
+                                        <option value="16">Entertainment: Board Games</option>
+                                        <option value="29">Entertainment: Comics</option>
+                                        <option value="31">Entertainment: Japanese Anime & Manga</option>
+                                        <option value="32">Entertainment: Cartoon & Animations</option>
+                                        <option value="17">Science & Nature</option>
+                                        <option value="18">Science: Computers</option>
+                                        <option value="30">Science: Gadgets</option>
+                                        <option value="19">Science: Mathematics</option>
+                                        <option value="20">Mythology</option>
+                                        <option value="21">Sports</option>
+                                        <option value="22">Geography</option>
+                                        <option value="23">History</option>
+                                        <option value="24">Politics</option>
+                                        <option value="25">Art</option>
+                                        <option value="26">Celebrities</option>
+                                        <option value="27">Animals</option>
+                                        <option value="28">Vehicles</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input_field">
+                                <label>Select Difficulty:</label>
+                                <div class="custom_select">
+                                    <select id="difficulty API">
+                                        <option value="">Any Difficulty</option>
+                                        <option value="easy">Easy</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="hard">Hard</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input_field">
+                                <label>Select Type:</label>
+                                <div class="custom_select">
+                                    <select id="type API">
+                                        <option value="">Any Type</option>
+                                        <option value="multiple">Multiple Choice</option>
+                                        <option value="boolean">True / False</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input_field">
+                                <label>Timer:</label>
+                                <input type="text" class="input" id="timer API" placeholder="Time number in seconds">
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error message</small>
+                            </div>
+                            <div class="input_field">
+                                <div class="input_field timer">
+                                    <label class="check">
+                                        <input type="checkbox" id="check API">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <p>Enable Timer</p>
+                                </div>
+                            </div>
+                            <div class="input_field">
+                                <input type="submit" value="Start Quiz" class="btn" id="start-btn">
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="input_field">
-                    <label>Select Difficulty:</label>
-                    <div class="custom_select">
-                        <select id="difficulty">
-                            <option value="">Any Difficulty</option>
-                            <option value="easy">Easy</option>
-                            <option value="medium">Medium</option>
-                            <option value="hard">Hard</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="input_field">
-                    <label>Select Type:</label>
-                    <div class="custom_select">
-                        <select id="type">
-                            <option value="">Any Type</option>
-                            <option value="multiple">Multiple Choice</option>
-                            <option value="boolean">True / False</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="input_field">
-                    <label>Timer:</label>
-                    <input type="text" class="input" id="timer" placeholder="Time number in seconds">
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-exclamation-circle"></i>
-                    <small>Error message</small>
-                </div>
-                <div class="input_field">
-                    <div class="input_field timer">
-                        <label class="check">
-                            <input type="checkbox" id="check">
-                            <span class="checkmark"></span>
-                        </label>
-                        <p>Enable Timer</p>
-                    </div>
-                    <div class="input_field file">
-                        <input type="file" id="file" accept="file/*">
-                        <label for="file">
-                            <span class="material-symbols-outlined">
-                                upload_file
-                            </span> &nbsp;
-                            Choose file
-                        </label>
-                    </div>
-                </div>
-                <div class="input_field">
-                    <input type="submit" value="Start" class="btn" id="start-btn">
+                <div class="tabs__content" id="File">
+                    <form id="form FILE">
+                        <div class="form" id="form">
+                            <div class="input_field" id="FILE">
+                                <label>Number of Questions:</label>
+                                <input type="text" class="input" id="sum_questions FILE" placeholder="Number from 1 to 50">
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error message</small>
+                            </div>
+                            <div class="input_field">
+                                <label>Select Category:</label>
+                                <div class="custom_select" >
+                                    <select id="category FILE">
+                                        <option value="0">Any Category</option>
+                                        <option value="9">General Knowledge</option>
+                                        <option value="10">Entertainment: Books</option>
+                                        <option value="11">Entertainment: Films</option>
+                                        <option value="12">Entertainment: Music</option>
+                                        <option value="13">Entertainment: Musicals & Theaters</option>
+                                        <option value="14">Entertainment: Television</option>
+                                        <option value="15">Entertainment: Video Games</option>
+                                        <option value="16">Entertainment: Board Games</option>
+                                        <option value="29">Entertainment: Comics</option>
+                                        <option value="31">Entertainment: Japanese Anime & Manga</option>
+                                        <option value="32">Entertainment: Cartoon & Animations</option>
+                                        <option value="17">Science & Nature</option>
+                                        <option value="18">Science: Computers</option>
+                                        <option value="30">Science: Gadgets</option>
+                                        <option value="19">Science: Mathematics</option>
+                                        <option value="20">Mythology</option>
+                                        <option value="21">Sports</option>
+                                        <option value="22">Geography</option>
+                                        <option value="23">History</option>
+                                        <option value="24">Politics</option>
+                                        <option value="25">Art</option>
+                                        <option value="26">Celebrities</option>
+                                        <option value="27">Animals</option>
+                                        <option value="28">Vehicles</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input_field">
+                                <label>Select Difficulty:</label>
+                                <div class="custom_select">
+                                    <select id="difficulty FILE">
+                                        <option value="">Any Difficulty</option>
+                                        <option value="easy">Easy</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="hard">Hard</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input_field">
+                                <label>Select Type:</label>
+                                <div class="custom_select">
+                                    <select id="type FILE">
+                                        <option value="">Any Type</option>
+                                        <option value="multiple">Multiple Choice</option>
+                                        <option value="boolean">True / False</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input_field">
+                                <label>Timer:</label>
+                                <input type="text" class="input" id="timer FILE" placeholder="Time number in seconds">
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error message</small>
+                            </div>
+                            <div class="input_field">
+                                <div class="input_field file">
+                                    <input type="file" id="file" accept="file/*" onchange="readFile(this)">
+                                    <label for="file">
+                                        <span class="material-symbols-outlined">
+                                            upload_file
+                                        </span> &nbsp;
+                                        <p id="label">Choose File</p>
+                                    </label>
+                                </div>
+                                <div class="input_field timer">
+                                    <label class="check">
+                                        <input type="checkbox" id="check FILE">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <p class="file">Enable Timer</p>
+                                </div>
+                                <p class="guide">Choose your personal questions in a JSON format file to play the quiz with the "Choose File" button.</p>
+                            </div>
+                            <div class="input_field">
+                                <input type="submit" value="Start Quiz" class="btn" id="start-btn file">
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
     <script src="Menu.js"></script>
 </body>
 </html>

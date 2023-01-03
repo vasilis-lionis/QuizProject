@@ -11,20 +11,17 @@ const form = document.getElementById("form")
 const timer= document.getElementById("timer")
 const TimerObject= document.getElementById("time")
 
-//ta get apoto menu.js
-const Questions = parseInt(localStorage.getItem('questions'))
-const Category = parseInt(localStorage.getItem('category'))
-const Difficulty = localStorage.getItem('difficulty')
-const Type = localStorage.getItem('type')
+//ta get apo to menu.js
+const json = JSON.parse(localStorage.getItem('json'))
+const questions = parseInt(localStorage.getItem('questions'))
+const type = localStorage.getItem('type')
 const input_time = parseInt(localStorage.getItem('Timer'))
 const Check = localStorage.getItem('check')
 //διαφορες μεταβλητες
 let shuffledQuestions,current, i,help,shuffledAnswers,answers,tries,swsto
 tries = 0
-let time = input_time+1 //+1 gia na mhn xanei sthn arxh mono to input_time grhgora kai den fanei 
+let time = input_time //+1 gia na mhn xanei sthn arxh mono to input_time grhgora kai den fanei 
 let interval
-
-
 
 startButton.addEventListener('click',startGame)
 startButton.classList.add('hide');
@@ -56,6 +53,11 @@ function startGame(){
         TimerObject.style.opacity = "1"
         interval = setInterval(setTimer, 1000) 
     }
+    if (time>=10){
+        timer.innerHTML = time
+    }else{
+        timer.innerHTML = `0${time}`
+    }
     JSONtoArray(json)
     swsto = 0 
     i=2;
@@ -78,27 +80,37 @@ function setNextQuestion(){
     resetState()
     showQuestion(shuffledQuestions[current])
 }
-
+var multiple
 function showQuestion(question){
     questionΕlement.innerText = question.question
     shuffledAnswers = question.answers.sort(() => Math.random() - .5)
-    if (shuffledAnswers[0].text == "True" || shuffledAnswers[0].text == "False" ){
-      for(let i=0; i<2; i++){
-        const button = document.createElement('button')
-        if(i==0){
-          button.innerText = 'True'
-        } 
-        else if(i==1){
-          button.innerText = 'False'
-        } 
-        button.classList.add('btn')
-        if(shuffledAnswers[i].correct){
-            button.dataset.correct = shuffledAnswers[i].correct
+    multiple = false
+    if (type == "boolean" ){
+        multiple = true
+        const button = [document.createElement('button'),document.createElement('button')]
+        for(let i=0; i<2; i++){
+            if(i==0){
+                button[i].innerText = 'True'
+            } 
+            else if(i==1){
+                button[i].innerText = 'False'
+            } 
+            button[i].classList.add('btn')
+            button[i].addEventListener('click',selectAnswer)
+            answerButtons.appendChild(button[i])
         }
-        button.addEventListener('click',selectAnswer)
-        answerButtons.appendChild(button)
-      }
-      return
+        for(let i=0; i<2; i++){ //0TRUE 1FALSE PANTA 
+            if(button[i].innerText == shuffledAnswers[i].text){
+                button[i].dataset.correct = shuffledAnswers[i].correct
+            }else{
+                if(i==0){
+                    button[i].dataset.correct = shuffledAnswers[1].correct
+                }else{
+                    button[i].dataset.correct = shuffledAnswers[0].correct
+                }
+            }
+        }
+        return
     }
     question.answers.forEach(answer => {
         const button = document.createElement('button')
@@ -123,7 +135,7 @@ function resetState(){
 function selectAnswer(e){
     const selectedButton = e.target
     const correct = selectedButton.dataset.correct
-    if(correct){
+    if(correct == "true"){
         swsto +=1
     }
     setStatusClass(document.body,correct)
@@ -151,7 +163,7 @@ function selectAnswer(e){
 
 function setStatusClass(element,correct){
     clearStatusClass(element)
-    if(correct){
+    if(correct == "true"){
         element.classList.add('correct')
     }
     else{
@@ -184,7 +196,7 @@ form.addEventListener('submit', function(e){
 })
 
 function Click(){
-    location.replace('results.html')
+    location.replace('Results.html')
 }
 
 var precodedArray
@@ -210,7 +222,7 @@ function JSONtoArray(jquest){  //json file
 
 var finalQuest = []
 let positions = []
-let WantedLength = Questions //max 49 
+let WantedLength = questions //max 49 
 
 function SetArray(quest/*array*/){
     positions.length = 0
@@ -228,35 +240,6 @@ function SetArray(quest/*array*/){
     }
 }
 
-var link = `https://opentdb.com/api.php?amount=${Questions}`
-
-if(Category != 0){
-    link += `&category=${Category}`
-}
-if(Difficulty != ""){
-    link += `&difficulty=${Difficulty}`
-}
-if(Type != ""){
-    link += `&type=${Type}` 
-}
-
-
-var file = "Documents/10-Entertainment_ Books.oq"
-var file_peinaw = "Documents/quiz_peinaw.json"
-var file2 = "10-Entertainment_ Books.oq"
-var json
-
-function getFile(){
-    fetch(link)
-    .then(response => {
-        return response.json() //retunrs our data
-    })              
-    .then(jsondata => {
-        //json file
-        json = jsondata
-        startGame()
-    })
-}
 
 function DecodeJSON(dquest){
     for (let i=0; i<dquest.results.length; i++){

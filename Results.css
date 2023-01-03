@@ -48,7 +48,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: underline hsl(var(--hue), 100%, 40%) 3px;
+    /*text-decoration: underline hsl(var(--hue), 100%, 40%) 3px;*/
 }
 
 table, tr, th {
@@ -81,12 +81,15 @@ tr:hover {
     border-color:black;
 }
 
-.restart-btn{
+.restart-btn,
+.menu-btn{
     margin: 5px;
-    font-size: 2.4rem;
+    font-size: 2rem;
     font-weight: bold;
     padding: 10px 20px;
 }
+
+
 
 .controls{
     display: flex;

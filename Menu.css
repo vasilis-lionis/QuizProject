@@ -37,16 +37,67 @@ body{
     text-transform: uppercase;
     text-align: center;
     background-color: #f7f7f7;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 2px solid #f7f7f7;
     padding: 20px 40px;
+    margin-bottom: 0;
 }
 
 .wrapper .title h2 {
     margin: 0;
 }
 
+.wrapper .tabs{
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #fff;
+}
+
+.wrapper .tabs .tabs__head{
+    display: flex;
+    align-items: stretch;
+}
+
+.wrapper .tabs .tabs__toggle{
+    display: flex;
+    width: 33.3334%;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    background: #f7f7f7;
+    cursor: pointer;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.wrapper .tabs .tabs__toggle.is-active{
+    background: #fff;
+}
+
+.wrapper .tabs .tabs__body .tabs__content{
+    padding: 30px;
+    display: none;
+}
+
+.wrapper .tabs .tabs__body .tabs__content .tabs__title{
+    font-size: 25px;
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform:capitalize;
+}
+
+.wrapper .tabs .tabs__body .tabs__content .tabs__text{
+    font-size: 18px;
+    color: #000;
+}
+
+.wrapper .tabs .tabs__body .tabs__content.is-active{
+    display: block;
+}
+
 .wrapper .form{
-    padding: 30px 40px;
+    padding: 20px 10px;
 }
 
 .wrapper .form .input_field{
@@ -160,27 +211,6 @@ body{
     flex-direction: row;
 }
 
-/*.wrapper .form .input_field.file label{
-    color: white;
-    height: 60px;
-    width: 250px;
-    background-color: hsl(200, 100%, 40%);
-    border: 2px solid hsl(200, 100%, 33%);
-    cursor: pointer;
-    border-radius: 3px;
-    outline: none;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}*/
-
 .wrapper .form .input_field .check{
     width: 15px;
     height: 15px;
@@ -233,7 +263,7 @@ body{
 .wrapper .form .input_field .btn,
 .wrapper .form .input_field.file label{
     width: 100%;
-    padding: 8px 10px;
+    padding: 8px 15px;
     font-size: 25px;
     border: 2px solid hsl(200, 100%, 33%);
     background-color: hsl(200, 100%, 40%);
@@ -247,12 +277,23 @@ body{
 .wrapper .form .input_field.file{
    position: absolute;
    left: 55%;
-   bottom: 25%;
+   bottom: 50%;
+}
+
+.wrapper .form .input_field.file p{
+    color: white;
+    font-size: 15px;
+}
+
+.wrapper .form .input_field .guide{
+    font-size: 15px;
+    position: relative;
+    bottom: 5px;
 }
 
 .wrapper .form .input_field.file label,
 .wrapper .form .input_field.file .material-symbols-outlined{
-    font-size: 1rem;
+    font-size: 0.97rem;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -267,10 +308,21 @@ body{
     background: hsl(200, 60%, 50%);
 }
 
-@media (max-width:420px){
+@media (max-width:400px){
     .wrapper .form .input_field.file{
         position: absolute;
+        bottom: 50%;
         left: 50%;
+    }
+    .wrapper .form .input_field.file p,
+    .wrapper .form .input_field.file .material-symbols-outlined{ 
+        font-size: 13.5px;
+    }
+    .wrapper .form .input_field.timer .file{
+        font-size: 14px;
+    }
+    .wrapper .form .input_field.file label{
+        width: 100%;
     }
 }
 
