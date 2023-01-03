@@ -20,6 +20,9 @@ let tabs = document.querySelectorAll(".tabs__toggle"),
 var Check
 var filed = false
 
+
+alert("Geia")
+
 tabs.forEach((tab,index) =>{
     tab.addEventListener('click', () =>{
         contents.forEach((content) =>{
