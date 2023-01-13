@@ -86,7 +86,7 @@ function showQuestion(question){
     questionΕlement.innerText = question.question
     shuffledAnswers = question.answers.sort(() => Math.random() - .5)
     multiple = false
-    if (type == "boolean" ){
+    if (type == "boolean" || (shuffledAnswers[0].text == 'True' || shuffledAnswers[1].text == 'True')){
         multiple = true
         const button = [document.createElement('button'),document.createElement('button')]
         for(let i=0; i<2; i++){

@@ -24,13 +24,17 @@ var filed = false
 
 
 tabs.forEach((tab,index) =>{
-    tab.addEventListener('click', () =>{
+    tab.addEventListener('click', (e) =>{
         contents.forEach((content) =>{
             content.classList.remove('is-active')
         })
         tabs.forEach((tab) => {
             tab.classList.remove('is-active')
         })
+
+        var line = document.querySelector(".line")
+        line.style.width = e.target.offsetWidth + "px"
+        line.style.left = e.target.offsetLeft + "px"
 
         contents[index].classList.add('is-active')
         tabs[index].classList.add('is-active')
