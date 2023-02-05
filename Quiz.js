@@ -17,6 +17,7 @@ const questions = parseInt(localStorage.getItem('questions'))
 const type = localStorage.getItem('type')
 const input_time = parseInt(localStorage.getItem('Timer'))
 const Check = localStorage.getItem('check')
+
 //διαφορες μεταβλητες
 let shuffledQuestions,current, i,help,shuffledAnswers,answers,tries,swsto
 tries = 0
@@ -85,7 +86,7 @@ function showQuestion(question){
     questionΕlement.innerText = question.question
     shuffledAnswers = question.answers.sort(() => Math.random() - .5)
     multiple = false
-    if (type == "boolean" ){
+    if (type == "boolean" || (shuffledAnswers[0].text == 'True' || shuffledAnswers[1].text == 'True')){
         multiple = true
         const button = [document.createElement('button'),document.createElement('button')]
         for(let i=0; i<2; i++){
@@ -290,6 +291,15 @@ let setTimer = () =>{
     }
     else{
         timer.innerHTML = `0${+(--time)}` 
+    }
+}
+
+function restartTries(){
+    const restart =  parseInt(localStorage.getItem('restart'))
+    if(restart == 0 || isNaN(restart)){
+        tries = 0
+    }else{
+        tries = parseInt(localStorage.getItem('tries'))
     }
 }
 

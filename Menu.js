@@ -1,17 +1,48 @@
-const startButton = document.getElementById("start-btn")
-const form = document.getElementById("form")
-const questions = document.getElementById("sum_questions")
-const category = document.getElementById("category")
-const difficulty = document.getElementById("difficulty")
-const type = document.getElementById("type")
-const timer = document.getElementById("timer")
-const check = document.getElementById("check")
+const startButtonAPI = document.getElementById("start-btn")
+const startButtonFILE = document.getElementById("start-btn file")
+const formAPI = document.getElementById("form API")
+const formFILE = document.getElementById("form FILE")
+const questionsAPI = document.getElementById("sum_questions API")
+const questionsFILE = document.getElementById("sum_questions FILE")
+const categoryAPI = document.getElementById("category API")
+const categoryFILE = document.getElementById("category FILE")
+const difficultyAPI = document.getElementById("difficulty API")
+const difficultyFILE = document.getElementById("difficulty FILE")
+const typeAPI = document.getElementById("type API")
+const typeFILE = document.getElementById("type FILE")
+const timerAPI = document.getElementById("timer API")
+const timerFILE = document.getElementById("timer FILE")
+const checkAPI = document.getElementById("check API")
+const checkFILE = document.getElementById("check FILE")
 const file = document.getElementById("file")
+let tabs = document.querySelectorAll(".tabs__toggle"),
+    contents = document.querySelectorAll('.tabs__content')
 var Check
+//vars for right function call or error message 
+var api = false 
 var filed = false
 
-function checkFILE(){
-    //alert("EIMAI GIT")
+
+tabs.forEach((tab,index) =>{
+    tab.addEventListener('click', (e) =>{
+        contents.forEach((content) =>{
+            content.classList.remove('is-active')
+        })
+        tabs.forEach((tab) => {
+            tab.classList.remove('is-active')
+        })
+
+        var line = document.querySelector(".line")
+        line.style.width = e.target.offsetWidth + "px"
+        line.style.left = e.target.offsetLeft + "px"
+
+        contents[index].classList.add('is-active')
+        tabs[index].classList.add('is-active')
+    })
+})
+
+
+function CheckFILE(){
     try{
         json = JSON.parse(json)
     }catch(e) {
@@ -21,20 +52,14 @@ function checkFILE(){
 }
 
 function message(){
-    if (checkFILE()){
+    if (CheckFILE()){
         alert("good json")
-        document.getElementById("label").innerHTML = "File Choosed"
-
+        document.getElementById("label").innerHTML = "File Chosen"
     }else{
         alert("bad json")
     }
     filed = true
 }
-
-startButton.addEventListener('click',()=>{
-    checkInputs()
-    sendItems()
-})
 
 function readFile(){
     let reader = new FileReader()
@@ -47,33 +72,56 @@ function readFile(){
     }
 }
 
+startButtonAPI.addEventListener('click',()=>{
+    InputType = "API"
+    api = true
+    filed = false
+    checkInputs()
+    sendItems()
+})
+
+startButtonFILE.addEventListener('click',()=>{
+    InputType = "FILE"
+    api = false
+    checkInputs()
+    sendItems()
+})
 
 function checkInputs(){
-    timer_value = parseInt(timer.value)
-    questions_value = parseInt(questions.value)
+    if(InputType == "FILE"){
+        checkInputsByType(questionsFILE,timerFILE,checkFILE)
+    }
+    else if(InputType == "API"){
+        checkInputsByType(questionsAPI,timerAPI,checkAPI)
+    }
+}
 
+function checkInputsByType(questions,timer,check){
     var correctQuestions = false
     var correctTime = false
 
     if(questions.value == ""){
         setErrorFor(questions, 'Number of questions cannot be blank')
-    }else if(isNaN(questions_value)){
+    }
+    else if(isNaN(parseInt(questions.value))){
         setErrorFor(questions, 'Amount of questions must be number')
     }
     else if(questions.value > 50){
         setErrorFor(questions, 'Number of questions cannot be over 50')
-    }else if(questions.value <= 0){
+    }
+    else if(questions.value <= 0){
         setErrorFor(questions, 'Number of questions cannot be under 0')
-    }else{
+    }
+    else{
         setSuccessFor(questions)
         correctQuestions = true
     }
 
     if(timer.value == "" && check.checked == true){
         setErrorFor(timer, 'Please insert number of time')
-    }else if ((timer.value < 0 || timer.value > 60) && check.checked == true){
+    }else if ((timer.value < 0 || timerFILE.value > 60) && check.checked == true){
         setErrorFor(timer, 'Invalid input')
-    }else if(isNaN(timer_value) && check.checked == true){
+    }else if(isNaN(parseInt(timer.value)) && check.checked == true){
         setErrorFor(timer, 'Amount of time must be number')
     }
     else if (timer.value != "" && check.checked == true){
@@ -81,12 +129,7 @@ function checkInputs(){
         correctTime = true
     }
 
-    if((filed)&&((correctTime && correctQuestions) ||(correctQuestions && check.checked == false))){
-        checkJSON()
-    }
-    else if((correctTime && correctQuestions) ||(correctQuestions && check.checked == false)){
-        getFile()
-    }
+    Travels(correctQuestions,correctTime,check) 
 }
 
 function setErrorFor(input, message){
@@ -102,22 +145,35 @@ function setSuccessFor(input){
     formControl.className = 'input_field success'
 }
 
-function getFile(){
+function Travels(correctQuestions,correctTime,check){
+    if((filed)&&((correctTime && correctQuestions) ||(correctQuestions && check.checked == false))){
+        checkJSON()
+    }
+    else if((!filed) && (!api)){
+        alert("You do not upload a Quiz file")
+    }
+    else if((correctTime && correctQuestions)||(correctQuestions && check.checked == false)){
+        getFile()
+    }
+}
 
-    var link = `https://opentdb.com/api.php?amount=${questions.value}`
+
+function getFile(){
+    var link = `https://opentdb.com/api.php?amount=${questionsAPI.value}`
     
     var file = "Documents/10-Entertainment_ Books.oq"
     var file_peinaw = "Documents/quiz_peinaw.json"
     var file2 = "10-Entertainment_ Books.oq"
 
-    if(category.value != 0){
-        link += `&category=${category.value}`
+
+    if(categoryAPI.value != 0){
+        link += `&category=${categoryAPI.value}`
     }
-    if(difficulty.value != ""){
-        link += `&difficulty=${difficulty.value}`
+    if(difficultyAPI.value != ""){
+        link += `&difficulty=${difficultyAPI.value}`
     }
-    if(type.value != ""){
-        link += `&type=${type.value}` 
+    if(typeAPI.value != ""){
+        link += `&type=${typeAPI.value}` 
     }
 
     fetch(link)
@@ -132,6 +188,15 @@ function getFile(){
 }
 
 function sendItems(){
+    if(InputType == "API"){
+        sendItemsByType(formAPI,questionsAPI,timerAPI,typeAPI,checkAPI)
+    }
+    else if(InputType == "FILE"){
+        sendItemsByType(formFILE,questionsFILE,timerFILE,typeFILE,checkFILE)
+    }
+}
+
+function sendItemsByType(form,questions,timer,type,check){
     form.addEventListener('submit', function(e){
         e.preventDefault()
         const Timer = timer.value 
@@ -152,7 +217,7 @@ function sendItems(){
 
 function checkJSON(){
     if(json.results.length == 0){
-        alert("No questions")
+        alert("This inputs didn't give any questions")
     }else{
         json = JSON.stringify(json)
         localStorage.setItem('json', json)
@@ -163,3 +228,5 @@ function checkJSON(){
 function goToQuiz(){
     location.assign('Quiz.html')
 }
+
+

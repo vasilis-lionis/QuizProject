@@ -9,7 +9,7 @@
     --hue-correct: 145;
 }
 
-body{
+body, form{
     --hue: var(--hue-neutral);
     padding: 0;
     margin: 0;

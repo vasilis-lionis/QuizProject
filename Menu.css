@@ -30,23 +30,82 @@ body{
 }
 
 .wrapper .title{
-    /*font-size: 2.5rem;*/
     font-weight: 700;
     margin-bottom: 25px;
     color: black;
     text-transform: uppercase;
     text-align: center;
-    background-color: #f7f7f7;
-    border-bottom: 1px solid #f0f0f0;
+    /*background-color: #f7f7f7;
+    border-bottom: 2px solid #f7f7f7;*/
     padding: 20px 40px;
+    margin-bottom: 0;
 }
 
 .wrapper .title h2 {
     margin: 0;
 }
 
+.wrapper .tabs .tabs__head{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 2px solid rgba(211, 210, 210);
+    position: relative;
+}
+
+.wrapper .tabs .tabs__toggle{
+    font-size: 18px;
+    color: #797878;
+    cursor: pointer;
+    padding: 13px;
+}
+
+.wrapper .tabs .tabs__toggle.is-active{
+    color: hsl(200, 60%, 55%);;
+}
+
+.wrapper .tabs .tabs__body .tabs__content{
+    padding: 30px;
+    display: none;
+    animation: moving .5s ease;
+}
+
+@keyframes moving{
+    from{transform: translateX(50px);opacity: 0;}
+    to{transform: translateX(0px);opacity: 1;}
+}
+
+.wrapper .tabs .tabs__body .tabs__content .tabs__title{
+    font-size: 25px;
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform:capitalize;
+}
+
+.wrapper .tabs .tabs__body .tabs__content .tabs__text{
+    font-size: 18px;
+    color: #000;
+}
+
+.wrapper .tabs .tabs__body .tabs__content.is-active{
+    display: block;
+}
+
+.line{
+    position: absolute;
+    top: 45px;
+    left: 16px;
+    width: 130px;
+    height: 5px;
+    background-color: hsl(200, 60%, 50%);
+    border-radius: 10px;
+    transition: all .3s ease-in-out;
+}
+
 .wrapper .form{
-    padding: 30px 40px;
+    padding: 20px 10px;
 }
 
 .wrapper .form .input_field{
@@ -212,7 +271,7 @@ body{
 .wrapper .form .input_field .btn,
 .wrapper .form .input_field.file label{
     width: 100%;
-    padding: 8px 10px;
+    padding: 8px 15px;
     font-size: 25px;
     border: 2px solid hsl(200, 100%, 33%);
     background-color: hsl(200, 100%, 40%);
@@ -257,31 +316,11 @@ body{
     background: hsl(200, 60%, 50%);
 }
 
-@media (max-width:420px){
-    .wrapper .form .input_field.file{
-        position: absolute;
-        left: 50%;
-    }
-    .wrapper .form .input_field.file p{
-        font-size: 15px;
-    }
-    .wrapper .form .input_field.file label{
-        width: 100%;
-    }
-}
-
-@media (max-width:375px){
+@media (max-width:400px){
     .wrapper .form .input_field.file{
         position: absolute;
         bottom: 50%;
-        left: 51%;
-    }
-    .wrapper .form .input_field.file p,
-    .wrapper .form .input_field.file .material-symbols-outlined{ 
-        font-size: 14px;
-    }
-    .wrapper .form .input_field.file label{
-        width: 103%;
+        left: 50%;
     }
 }
 

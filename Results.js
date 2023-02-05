@@ -4,16 +4,16 @@ const correct = document.getElementById('correct')
 const wrong = document.getElementById('wrong')
 const percent = document.getElementById('percent')
 const score = document.getElementById('score')
-
 const apotelesma = localStorage.getItem('sum')
 const Tries = localStorage.getItem('tries')
 const Correct = localStorage.getItem('correct')
 const Time = localStorage.getItem('time')
+var restart = 0
 
 Sum.textContent = apotelesma
 tries.textContent = Tries
 correct.textContent = Correct
-if(Time ==0){
+if(Time == 0){
     wrong.textContent = 0
 }else{
     wrong.textContent = apotelesma - Correct
@@ -29,3 +29,4 @@ function Restart(){
 function Menu(){
     return location.replace('Menu.html')
 }
+
