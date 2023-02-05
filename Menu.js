@@ -22,7 +22,6 @@ var Check
 var api = false 
 var filed = false
 
-console.log("geia")
 tabs.forEach((tab,index) =>{
     tab.addEventListener('click', (e) =>{
         contents.forEach((content) =>{
