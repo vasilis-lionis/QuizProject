@@ -66,6 +66,7 @@ function startGame(){
     startButton.classList.add('hide');
     resultButton.classList.add('hide');
     SetArray(precodedArray)
+    console.log(finalQuest)
     shuffledQuestions = finalQuest.sort(() => Math.random() - .5)
     current = 0
     questionContainer.classList.remove('hide')
@@ -86,7 +87,7 @@ function showQuestion(question){
     questionΕlement.innerText = question.question
     shuffledAnswers = question.answers.sort(() => Math.random() - .5)
     multiple = false
-    if (type == "boolean" || (shuffledAnswers[0].text == 'True' || shuffledAnswers[1].text == 'True')){
+    if (shuffledQuestions[current].type ==  "boolean"){
         multiple = true
         const button = [document.createElement('button'),document.createElement('button')]
         for(let i=0; i<2; i++){
@@ -201,13 +202,13 @@ function Click(){
 }
 
 var precodedArray
-                   
+                  
 function JSONtoArray(jquest){  //json file 
   precodedArray = [] //before encoding entities 
   DecodeJSON(jquest)
   for(let i=0;i<jquest.results.length;i++){
     if(typeof json.results[i].correct_answer  == 'string'){
-        precodedArray.push({'question': jquest.results[i].question,'answers': [{'text': json.results[i].correct_answer, 'correct':true}]})
+        precodedArray.push({'question': jquest.results[i].question, 'type' : json.results[i].type, 'answers': [{'text': json.results[i].correct_answer, 'correct':true}]})
     }
     else{
         precodedArray.push({'question': jquest.results[i].question,'answers': []})
