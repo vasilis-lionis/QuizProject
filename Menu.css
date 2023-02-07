@@ -288,6 +288,10 @@ body{
    bottom: 50%;
 }
 
+.wrapper .form .input_field.file label:hover{
+    border: 2px solid black;
+ }
+
 .wrapper .form .input_field.file p{
     color: white;
     font-size: 15px;

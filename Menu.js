@@ -52,12 +52,12 @@ function CheckFILE(){
 
 function message(){
     if (CheckFILE()){
-        alert("good json")
+        alert("File Saved")
         document.getElementById("label").innerHTML = "File Chosen"
+        filed = true
     }else{
-        alert("bad json")
+        alert("This is a wrong shema JSON File")       
     }
-    filed = true
 }
 
 function readFile(){
