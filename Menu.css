@@ -105,7 +105,11 @@ body{
 }
 
 .wrapper .form{
-    padding: 20px 10px;
+    padding: 19px 10px; 
+}
+
+.wrapper #API .form{
+    padding: 20px;
 }
 
 .wrapper .form .input_field{
@@ -119,8 +123,14 @@ body{
     font-size: 17px;
 }
 
+.wrapper #API .form .input_field{
+    margin-bottom: 10px;
+    padding-bottom: 25px;
+}
+
+
 .wrapper .form .input_field label{
-    width: 200px;
+    width: 300px;
     color: black;
     margin-right: 10px;
     font-size: 18px;
@@ -313,7 +323,7 @@ body{
 }
 
 .wrapper .form .input_field:last-child{
-    margin-bottom: 0;
+    margin-bottom: 0px;
 }
 
 .wrapper .form .input_field .btn:hover{
