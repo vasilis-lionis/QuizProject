@@ -56,7 +56,7 @@ function message(){
         document.getElementById("label").innerHTML = "File Chosen"
         filed = true
     }else{
-        alert("This is a wrong shema JSON File")       
+        alert("This is a wrong schema JSON File")       
     }
 }
 
