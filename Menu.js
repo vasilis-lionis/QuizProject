@@ -118,7 +118,7 @@ function checkInputsByType(questions,timer,check){
 
     if(timer.value == "" && check.checked == true){
         setErrorFor(timer, 'Please insert number of time')
-    }else if ((timer.value < 0 || timerFILE.value > 60) && check.checked == true){
+    }else if ((timer.value < 0 || timer.value > 60) && check.checked == true){
         setErrorFor(timer, 'Invalid input')
     }else if(isNaN(parseInt(timer.value)) && check.checked == true){
         setErrorFor(timer, 'Amount of time must be number')
