@@ -105,15 +105,12 @@ body{
 }
 
 .wrapper .form{
-    padding: 19px 10px; 
+    padding: 19px 10px;
 }
 
-.wrapper #API .form{
-    padding: 20px;
-}
 
 .wrapper .form .input_field{
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     padding-bottom: 20px;
     display: flex;
     align-items: center;
@@ -124,8 +121,8 @@ body{
 }
 
 .wrapper #API .form .input_field{
-    margin-bottom: 10px;
-    padding-bottom: 25px;
+    margin-bottom: 11px;
+    padding-bottom: 18px;
 }
 
 
@@ -142,7 +139,7 @@ body{
 
 .wrapper .form .input_field .input{
     display: block;
-    width: 100%;
+    width: 100%; /*EDW GIA TO TIMER*/
     outline: none;
     border: 2px solid #d5dbd9;
     padding: 8px 10px;
@@ -150,6 +147,11 @@ body{
     border-radius: 3px;
     transition: all 0.3 ease;
 }
+
+.wrapper #File .form .input_field.TIMER .input{
+    width: 53%;
+}
+
 .wrapper .form .input_field.success input{
     border-color: #2ecc71;
 }
@@ -225,8 +227,15 @@ body{
     font-weight: bold;
 }
 
+/*ΕΔΩ*/
 .wrapper .form .input_field.timer{
     flex-direction: row;
+}
+
+.wrapper #File .form .input_field.timer{
+    flex-direction: row;
+    bottom: 60px;
+    left: 57%;
 }
 
 .wrapper .form .input_field .check{
@@ -250,7 +259,6 @@ body{
     border: 1px solid #78bfdb;
     display: block;
     position: relative;
-    
 }
 
 .wrapper .form .input_field .check .checkmark::before{  
@@ -291,27 +299,33 @@ body{
     border-radius: 3px;
     outline: none;
 }
-
+/*EDW TO ALLO*/
 .wrapper .form .input_field.file{
    position: absolute;
-   left: 55%;
-   bottom: 50%;
+   top: 0%;
+   left: 13.5%;
+   width: 75%;
+}
+
+.wrapper .form .input_field.file label{
+    border: 2px solid gray;
+    background-color: gray;
 }
 
 .wrapper .form .input_field.file label:hover{
-    border: 2px solid black;
+    background: hsl(200, 90%, 45%);
  }
 
 .wrapper .form .input_field.file p{
     color: white;
-    font-size: 15px;
+    font-size: 20px;
 }
 
-.wrapper .form .input_field .guide{
+/*.wrapper .form .input_field .guide{
     font-size: 15px;
     position: relative;
     bottom: 5px;
-}
+}*/
 
 .wrapper .form .input_field.file label,
 .wrapper .form .input_field.file .material-symbols-outlined{
@@ -330,12 +344,12 @@ body{
     background: hsl(200, 60%, 50%);
 }
 
-@media (max-width:400px){
+/*@media (max-width:400px){
     .wrapper .form .input_field.file{
         position: absolute;
         bottom: 50%;
         left: 50%;
     }
-}
+}*/
 
 
