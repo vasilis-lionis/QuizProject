@@ -24,8 +24,10 @@ body, form{
 }
 
 .container{
+    /*width: 700px;
+    max-width: 40%;*/
+    max-width: 100%;
     width: 700px;
-    max-width: 40%;
     background-color: aliceblue;
     border-radius: 5px;
     padding: 8px ;
