@@ -2,7 +2,7 @@
 
 *, *::before, *::after{
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;              /*Verdana, Geneva, Tahoma, sans-serif;*/
+    font-family: 'Merriweather Sans', sans-serif;             /*Verdana, Geneva, Tahoma, sans-serif;*/
 }
 
 :root{
@@ -20,7 +20,7 @@ body, form{
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color:hsl(var(--hue), 60%, 55%);
+    background: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
 }
 
 .container{
