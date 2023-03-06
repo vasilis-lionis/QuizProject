@@ -21,7 +21,7 @@ var Check
 //vars for right function call or error message 
 var api = false 
 var filed = false
-
+var json = ""
 
 tabs.forEach((tab,index) =>{
     tab.addEventListener('click', (e) =>{
@@ -84,9 +84,11 @@ startButtonAPI.addEventListener('click',()=>{
 startButtonFILE.addEventListener('click',()=>{
     InputType = "FILE"
     api = false
-    if (json.results.length < questionsFILE.value ){
-        alert("This file has fewer questions about 'question number' input and it will game with "+json.results.length + " questions")
-        questionsFILE.value = json.results.length
+    if(filed){
+        if ((json.results.length < questionsFILE.value) && filed){
+            alert("This file has fewer questions about 'question number' input and it will game with "+json.results.length + " questions")
+            questionsFILE.value = json.results.length
+        }
     }
     checkInputs()
     sendItems()
