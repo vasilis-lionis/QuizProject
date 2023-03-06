@@ -313,7 +313,7 @@ body{
 }
 
 .wrapper .form .input_field.file label:hover{
-    background: hsl(200, 90%, 45%);
+    background: hsl(180, 1%, 45%);
  }
 
 .wrapper .form .input_field.file p{

@@ -22,6 +22,7 @@ var Check
 var api = false 
 var filed = false
 
+
 tabs.forEach((tab,index) =>{
     tab.addEventListener('click', (e) =>{
         contents.forEach((content) =>{
@@ -40,27 +41,7 @@ tabs.forEach((tab,index) =>{
     })
 })
 
-
-function CheckFILE(){
-    try{
-        json = JSON.parse(json)
-    }catch(e) {
-        return false
-    }
-    return true 
-}
-
-function message(){
-    if (CheckFILE()){
-        alert("File Saved")
-        document.getElementById("label").innerHTML = "File Chosen"
-        filed = true
-    }else{
-        alert("This is a wrong schema JSON File")       
-    }
-}
-
-function readFile(){
+function readFile(){ //UPLOAD FILE
     let reader = new FileReader()
 
     reader.readAsText(file.files[0])
@@ -71,6 +52,26 @@ function readFile(){
     }
 }
 
+function message(){ //MESSAGE FOR THE UPLOAD STATE
+    if (CheckFILE()){
+        alert("File Saved")
+        document.getElementById("label").innerHTML = "File Chosen"
+        filed = true
+    }else{
+        alert("This is a wrong schema JSON File")       
+    }
+    
+}
+
+function CheckFILE(){ //JSON VALIDATION 
+    try{
+        json = JSON.parse(json)
+    }catch(e) {
+        return false
+    }
+    return true 
+}
+
 startButtonAPI.addEventListener('click',()=>{
     InputType = "API"
     api = true
@@ -79,12 +80,18 @@ startButtonAPI.addEventListener('click',()=>{
     sendItems()
 })
 
+
 startButtonFILE.addEventListener('click',()=>{
     InputType = "FILE"
     api = false
+    if (json.results.length < questionsFILE.value ){
+        alert("This file has fewer questions about 'question number' input and it will game with "+json.results.length + " questions")
+        questionsFILE.value = json.results.length
+    }
     checkInputs()
     sendItems()
 })
+
 
 function checkInputs(){
     if(InputType == "FILE"){
@@ -127,7 +134,7 @@ function checkInputsByType(questions,timer,check){
         setSuccessFor(timer)
         correctTime = true
     }
-
+    
     Travels(correctQuestions,correctTime,check) 
 }
 
