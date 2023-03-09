@@ -18,10 +18,11 @@ const file = document.getElementById("file")
 let tabs = document.querySelectorAll(".tabs__toggle"),
     contents = document.querySelectorAll('.tabs__content')
 var Check
+var json = ""
 //vars for right function call or error message 
 var api = false 
 var filed = false
-var json = ""
+
 
 tabs.forEach((tab,index) =>{
     tab.addEventListener('click', (e) =>{
@@ -72,6 +73,7 @@ function CheckFILE(){ //JSON VALIDATION
     return true 
 }
 
+//event which triggered when the user presed the "Start Quiz" button from the api form
 startButtonAPI.addEventListener('click',()=>{
     InputType = "API"
     api = true
@@ -80,7 +82,7 @@ startButtonAPI.addEventListener('click',()=>{
     sendItems()
 })
 
-
+//event which triggered when the user presed the "Start Quiz" button from the file form
 startButtonFILE.addEventListener('click',()=>{
     InputType = "FILE"
     api = false
@@ -94,7 +96,7 @@ startButtonFILE.addEventListener('click',()=>{
     sendItems()
 })
 
-
+//function that chooses the correct vars and then checking them with the checkInputsByType function
 function checkInputs(){
     if(InputType == "FILE"){
         checkInputsByType(questionsFILE,timerFILE,checkFILE)
@@ -155,6 +157,7 @@ function setSuccessFor(input){
 
 function Travels(correctQuestions,correctTime,check){
     if((filed)&&((correctTime && correctQuestions) ||(correctQuestions && check.checked == false))){
+        FileFilteringJson(json)
         checkJSON()
     }
     else if((!filed) && (!api)){
@@ -238,3 +241,8 @@ function goToQuiz(){
 }
 
 
+// categoryFILE  difficultyFILE  typeFILE //
+
+function FileFilteringJson(unfilteredjson){
+    console.log(categoryFILE,difficultyFILE,typeFILE)
+}

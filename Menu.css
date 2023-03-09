@@ -149,15 +149,25 @@ body{
 }
 
 .wrapper #File .form .input_field.TIMER .input{
-    width: 53%;
+    width: 60%;
 }
 
 .wrapper .form .input_field.success input{
     border-color: #2ecc71;
 }
 
+.wrapper #File .form .input_field#timer.success  input{
+    border-color: #2ecc71;
+    width: 60%;
+}
+
 .wrapper .form .input_field.error input{
     border-color: #e74c3c;
+}
+
+.wrapper #File .form .input_field#timer.error  input{
+    border-color: #e74c3c;
+    width: 60%;
 }
 
 .wrapper .form .input_field i{
@@ -167,12 +177,29 @@ body{
     visibility: hidden;
 }
 
+.wrapper #File .form .input_field#timer i{
+    position: absolute;
+    top: 40px;
+    right: 134px;
+    visibility: hidden;
+}
+
 .wrapper .form .input_field.success i.fa-check-circle{
     color: #2ecc71;
     visibility: visible;
 }
 
+.wrapper #File .form .input_field#timer.success i.fa-exclamation-circle{
+    color: #2ecc71;
+    visibility: visible;
+}
+
 .wrapper .form .input_field.error i.fa-exclamation-circle{
+    color: #e74c3c;
+    visibility: visible;
+}
+
+.wrapper #File .form .input_field#timer.error i.fa-exclamation-circle{
     color: #e74c3c;
     visibility: visible;
 }
@@ -222,7 +249,7 @@ body{
 }
 
 .wrapper .form .input_field p{
-    font-size: 17px;
+    font-size: 16px;
     color: black;
     font-weight: bold;
 }
@@ -234,8 +261,8 @@ body{
 
 .wrapper #File .form .input_field.timer{
     flex-direction: row;
-    bottom: 60px;
-    left: 57%;
+    bottom: 63px;
+    left: 63%;
 }
 
 .wrapper .form .input_field .check{
@@ -256,9 +283,11 @@ body{
 .wrapper .form .input_field .check .checkmark{
     width: 15px;
     height: 15px;
+    top: 3px;
     border: 1px solid #78bfdb;
     display: block;
     position: relative;
+    
 }
 
 .wrapper .form .input_field .check .checkmark::before{  
