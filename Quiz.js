@@ -13,6 +13,7 @@ const TimerObject= document.getElementById("time")
 
 //ta get apo to menu.js
 const json = JSON.parse(localStorage.getItem('json'))
+console.log(json)
 const questions = parseInt(localStorage.getItem('questions'))
 const type = localStorage.getItem('type')
 const input_time = parseInt(localStorage.getItem('Timer'))

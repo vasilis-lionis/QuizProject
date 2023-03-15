@@ -158,7 +158,7 @@ function setSuccessFor(input){
 function Travels(correctQuestions,correctTime,check){
     if((filed)&&((correctTime && correctQuestions) ||(correctQuestions && check.checked == false))){
         FileFilteringJson(json)
-        checkJSON()
+        //checkJSON()
     }
     else if((!filed) && (!api)){
         alert("You do not upload a Quiz file")
@@ -210,8 +210,14 @@ function sendItems(){
 function sendItemsByType(form,questions,timer,type,check){
     form.addEventListener('submit', function(e){
         e.preventDefault()
-        const Timer = timer.value 
-        const Questions = questions.value
+        const Timer = timer.value
+        /*var Questions
+        if(Json.results.length < questionsFILE.value){
+            Questions = Json.results.length
+        }else{
+            Questions = questions.value
+        }*/
+        
         const Type = type.value
         if (check.checked == true){
             Check = 1
@@ -227,22 +233,44 @@ function sendItemsByType(form,questions,timer,type,check){
 }
 
 function checkJSON(){
-    if(json.results.length == 0){
+    if(finaljson.results.length == 0){
         alert("This inputs didn't give any questions")
-    }else{
-        json = JSON.stringify(json)
-        localStorage.setItem('json', json)
-        goToQuiz()
+        return
+    }else if(finaljson.results.length < questionsFILE.value){
+        alert("This file has fewer questions about 'question number' input and it will game with "+finaljson.results.length + " questions")
+        Questions = finaljson.results.length
     }
+    else{
+        Questions = questionsFILE.value
+    }
+
+    finaljson = JSON.stringify(finaljson)
+    localStorage.setItem('json', finaljson)
+    goToQuiz()
 }
 
 function goToQuiz(){
     location.assign('Quiz.html')
 }
 
+var finaljson = {
+        "response_code": 0,
+        "results": []
+    }
 
 // categoryFILE  difficultyFILE  typeFILE //
 
 function FileFilteringJson(unfilteredjson){
-    console.log(categoryFILE,difficultyFILE,typeFILE)
+    if(/*categoryFILE.value != "0" &&*/ difficultyFILE.value != "" && typeFILE.value != ""){
+        for(let i=0; i<unfilteredjson.results.length; i++){
+            if((difficultyFILE.value == unfilteredjson.results[i].difficulty) /*&&(categoryFILE.value == unfilteredjson.results[i].category) */&&(typeFILE.value == unfilteredjson.results[i].type) ){
+                finaljson.results.push(unfilteredjson.results[i])
+            }
+        }
+    }
+    else{
+        finaljson = unfilteredjson
+    }
+    console.log(finaljson)
+    checkJSON()
 }

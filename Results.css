@@ -18,13 +18,15 @@ body, form{
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color:hsl(var(--hue), 60%, 55%);;
+    background: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
 }
 
 .container{
+    /*width: 700px;
+    max-width: 45%;*/
+    max-width: 100%;
     width: 700px;
     height: 490px;
-    max-width: 45%;
     background-color: aliceblue;
     border-radius: 5px;
     padding: 10px;
@@ -69,7 +71,6 @@ tr:hover {
 
 .btn{
     --hue: var(--hue-neutral);
-    font-size: 1.5rem;
     border: 3.5px solid hsl(var(--hue), 100%, 33%);
     background-color: hsl(var(--hue), 100%, 40%);
     border-radius: 5px;
@@ -89,10 +90,34 @@ tr:hover {
     padding: 10px 20px;
 }
 
-
-
 .controls{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width:414px){
+    .container{
+        height: 400px;
+    }
+    .restart-btn,
+    .menu-btn{
+        font-size: 1.4rem;
+    }
+    table, tr, th {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width:393px){
+    .container{
+        height: 400px;
+    }
+    .restart-btn,
+    .menu-btn{
+        font-size: 1.2rem;
+    }
+    table, tr, th {
+        font-size: 1.3rem;
+    }
 }
