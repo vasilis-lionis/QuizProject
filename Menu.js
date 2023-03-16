@@ -193,7 +193,7 @@ function getFile(){
     })              
     .then(jsondata => {
         //json file
-        json = jsondata
+        finaljson = jsondata
         checkJSON()
     })
 }
@@ -211,41 +211,39 @@ function sendItemsByType(form,questions,timer,type,check){
     form.addEventListener('submit', function(e){
         e.preventDefault()
         const Timer = timer.value
-        /*var Questions
-        if(Json.results.length < questionsFILE.value){
-            Questions = Json.results.length
-        }else{
-            Questions = questions.value
-        }*/
-        
         const Type = type.value
+
         if (check.checked == true){
             Check = 1
         } 
         else{
             Check = 0
         }
-        localStorage.setItem('questions',Questions)
+
         localStorage.setItem('Timer', Timer)
         localStorage.setItem('check', Check)
         localStorage.setItem('type', Type)
     })
 }
-
+var Questions 
 function checkJSON(){
-    if(finaljson.results.length == 0){
+    if(finaljson.results.length == 0){ //CHECKS IF FOR SOME REASON THE FINAL JSON HASNT ANY QUESTIONS
         alert("This inputs didn't give any questions")
         return
-    }else if(finaljson.results.length < questionsFILE.value){
+    }
+    else if(finaljson.results.length < questionsFILE.value){ //CHECKS IF THE GIVE FILE HAS LESS QUESTIONS THAN USER'S INPUT
         alert("This file has fewer questions about 'question number' input and it will game with "+finaljson.results.length + " questions")
         Questions = finaljson.results.length
     }
-    else{
+    else if (InputType == "FILE"){ //IF THE OTHERS ARE FALSE AND IT RUNS A "FILE" QUIZ
         Questions = questionsFILE.value
+    }else if(InputType == "API"){ //AND HERE IF IT RUNS A "API" QUIZ 
+        Questions = questionsAPI.value
     }
 
-    finaljson = JSON.stringify(finaljson)
-    localStorage.setItem('json', finaljson)
+    localStorage.setItem('questions',Questions) //SENDS THE AMOUNT OF QUESTIONS
+    finaljson = JSON.stringify(finaljson) //STRING PARSING THE JSON FILE TO SEND IT WITHOUT PROBLEMS 
+    localStorage.setItem('json', finaljson) //SENDS THE "FINALJSON" FILE WITH THE FINAL FORM 
     goToQuiz()
 }
 
@@ -257,8 +255,6 @@ var finaljson = {
         "response_code": 0,
         "results": []
     }
-
-// categoryFILE  difficultyFILE  typeFILE //
 
 function FileFilteringJson(unfilteredjson){
     if(/*categoryFILE.value != "0" &&*/ difficultyFILE.value != "" && typeFILE.value != ""){
