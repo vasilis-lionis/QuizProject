@@ -257,9 +257,9 @@ var finaljson = {
     }
 
 function FileFilteringJson(unfilteredjson){
-    if(/*categoryFILE.value != "0" &&*/ difficultyFILE.value != "" && typeFILE.value != ""){
+    if((difficultyFILE.value != "") || (typeFILE.value != "")){
         for(let i=0; i<unfilteredjson.results.length; i++){
-            if((difficultyFILE.value == unfilteredjson.results[i].difficulty) /*&&(categoryFILE.value == unfilteredjson.results[i].category) */&&(typeFILE.value == unfilteredjson.results[i].type) ){
+            if((difficultyFILE.value == unfilteredjson.results[i].difficulty) || (typeFILE.value == unfilteredjson.results[i].type)){
                 finaljson.results.push(unfilteredjson.results[i])
             }
         }
