@@ -91,12 +91,20 @@ function showQuestion(question){
     if (shuffledQuestions[current].type ==  "boolean"){
         multiple = true
         const button = [document.createElement('button'),document.createElement('button')]
-        for(let i=0; i<2; i++){
+        for(let i=0; i<2; i++ ){
             if(i==0){
-                button[i].innerText = 'True'
+                if(json.language == "el"){
+                    button[i].innerText = 'Σωστό'
+                }else{
+                    button[i].innerText = 'True'
+                }
             } 
             else if(i==1){
-                button[i].innerText = 'False'
+                if(json.language == "el"){
+                    button[i].innerText = 'Λάθος'
+                }else{
+                    button[i].innerText = 'False'
+                }
             } 
             button[i].classList.add('btn')
             button[i].addEventListener('click',selectAnswer)

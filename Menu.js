@@ -253,13 +253,21 @@ function goToQuiz(){
 
 var finaljson = {
         "response_code": 0,
+        "language": "",
         "results": []
     }
 
 function FileFilteringJson(unfilteredjson){
-    if((difficultyFILE.value != "") || (typeFILE.value != "")){
+    finaljson.language = json.language // finaljson.push({"language" : json.language})//
+    if((difficultyFILE.value != "") && (typeFILE.value != "")){
         for(let i=0; i<unfilteredjson.results.length; i++){
             if((difficultyFILE.value == unfilteredjson.results[i].difficulty) && (typeFILE.value == unfilteredjson.results[i].type)){
+                finaljson.results.push(unfilteredjson.results[i])
+            }
+        }
+    }else if((difficultyFILE.value != "") || (typeFILE.value != "")){
+        for(let i=0; i<unfilteredjson.results.length; i++){
+            if((difficultyFILE.value == unfilteredjson.results[i].difficulty) || (typeFILE.value == unfilteredjson.results[i].type)){
                 finaljson.results.push(unfilteredjson.results[i])
             }
         }
