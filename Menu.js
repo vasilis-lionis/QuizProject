@@ -259,7 +259,7 @@ var finaljson = {
 function FileFilteringJson(unfilteredjson){
     if((difficultyFILE.value != "") || (typeFILE.value != "")){
         for(let i=0; i<unfilteredjson.results.length; i++){
-            if((difficultyFILE.value == unfilteredjson.results[i].difficulty) || (typeFILE.value == unfilteredjson.results[i].type)){
+            if((difficultyFILE.value == unfilteredjson.results[i].difficulty) && (typeFILE.value == unfilteredjson.results[i].type)){
                 finaljson.results.push(unfilteredjson.results[i])
             }
         }
