@@ -189,7 +189,7 @@ body{
     visibility: visible;
 }
 
-.wrapper #File .form .input_field#timer.success i.fa-exclamation-circle{
+.wrapper #File .form .input_field#timer.success i.fa-check-circle{
     color: #2ecc71;
     visibility: visible;
 }
