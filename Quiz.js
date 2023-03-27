@@ -78,13 +78,14 @@ function startGame(){
     setNextQuestion();
 }
 
-
+let dokimi
 function setNextQuestion(){
     resetState()
     showQuestion(shuffledQuestions[current])
 }
-var multiple
+var checker
 function showQuestion(question){
+    checker = false
     questionΕlement.innerText = question.question
     shuffledAnswers = question.answers.sort(() => Math.random() - .5)
     multiple = false
@@ -146,9 +147,10 @@ function resetState(){
 function selectAnswer(e){
     const selectedButton = e.target
     const correct = selectedButton.dataset.correct
-    if(correct == "true"){
+    if(correct == "true" && checker == false){
         swsto +=1
     }
+    checker = true
     setStatusClass(document.body,correct)
     Array.from(answerButtons.children).forEach(button =>{
         setStatusClass(button,button.dataset.correct)
