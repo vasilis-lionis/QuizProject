@@ -110,17 +110,21 @@ function checkInputsByType(questions,timer,check){
     var correctQuestions = false
     var correctTime = false
 
-    if(questions.value == ""){
+    if((questions.value == "" && InputType == "API") || (questions.value == "" && InputType == "FILE" && filed)){
         setErrorFor(questions, 'Number of questions cannot be blank')
     }
     else if(isNaN(parseInt(questions.value))){
         setErrorFor(questions, 'Amount of questions must be number')
     }
-    else if(questions.value > json.results.length){
-        setErrorFor(questions, 'Number of questions cannot be over'+json.results.length)
+    else if(questions.value > 50 && InputType == "API"){
+        setErrorFor(questions, 'Number of questions cannot be over 50')
     }
     else if(questions.value <= 0){
         setErrorFor(questions, 'Number of questions cannot be under 0')
+    }
+    else if((!filed) && (questions.value != "") && (InputType == "FILE")){
+        setErrorFor(questions, "You haven't upload a quiz file")
+        return
     }
     else{
         setSuccessFor(questions)
