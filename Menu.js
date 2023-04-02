@@ -116,8 +116,8 @@ function checkInputsByType(questions,timer,check){
     else if(isNaN(parseInt(questions.value))){
         setErrorFor(questions, 'Amount of questions must be number')
     }
-    else if(questions.value > 50){
-        setErrorFor(questions, 'Number of questions cannot be over 50')
+    else if(questions.value > json.results.length){
+        setErrorFor(questions, 'Number of questions cannot be over'+json.results.length)
     }
     else if(questions.value <= 0){
         setErrorFor(questions, 'Number of questions cannot be under 0')
