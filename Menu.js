@@ -113,6 +113,10 @@ function checkInputsByType(questions,timer,check){
     if((questions.value == "" && InputType == "API") || (questions.value == "" && InputType == "FILE" && filed)){
         setErrorFor(questions, 'Number of questions cannot be blank')
     }
+    else if(questions.value == "" && InputType == "FILE" && !filed){
+        alert("You do not upload a Quiz file")
+        return
+    }
     else if(isNaN(parseInt(questions.value))){
         setErrorFor(questions, 'Amount of questions must be number')
     }
@@ -163,9 +167,6 @@ function Travels(correctQuestions,correctTime,check){
     if((filed)&&((correctTime && correctQuestions) ||(correctQuestions && check.checked == false))){
         FileFilteringJson(json)
         //checkJSON()
-    }
-    else if((!filed) && (!api)){
-        alert("You do not upload a Quiz file")
     }
     else if((correctTime && correctQuestions)||(correctQuestions && check.checked == false)){
         getFile()
