@@ -20,10 +20,22 @@ const input_time = parseInt(localStorage.getItem('Timer'))
 const Check = localStorage.getItem('check')
 
 //διαφορες μεταβλητες
-let shuffledQuestions,current, i,help,shuffledAnswers,answers,tries,swsto
+let shuffledQuestions,current,i,help,shuffledAnswers,answers,tries,swsto
 tries = 0
 let time = input_time //+1 gia na mhn xanei sthn arxh mono to input_time grhgora kai den fanei 
 let interval
+
+//IF USER PRESS BACK BUTTON REPLACE WITH THE MENU HTML
+window.history.pushState({page: 1}, "", "");
+
+window.onpopstate = function(event) {
+  if(event){
+    location.replace('Menu.html')
+  }
+  else{
+    alert("ANTIO")
+  }
+}
 
 startButton.addEventListener('click',startGame)
 startButton.classList.add('hide');
@@ -143,6 +155,7 @@ function resetState(){
         (answerButtons.firstChild)
     }
 }
+
 
 function selectAnswer(e){
     const selectedButton = e.target
